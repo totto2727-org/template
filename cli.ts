@@ -13,8 +13,7 @@
  * ```
  */
 
-import type { Endpoints } from 'npm:@octokit/types@13.8.0'
-import { App, Octokit } from 'npm:octokit@4.1.2'
+import { Octokit } from 'npm:octokit@4.1.2'
 import { dirname, join, parse } from 'jsr:@std/path@1.0.8'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, Match, Predicate, pipe } from 'jsr:@totto/function@0.1.3/effect'
@@ -55,7 +54,23 @@ if (import.meta.main) {
       path: targetPath,
     })
 
-    const filesWithSavingPath = pipe(files)
+    const filesWithSavingPath = pipe(
+      files,
+      Array.map((v) => {
+        const parsedPath = parse(v.path)
+        const path = join(
+          savingPath,
+          join(
+            v.path.replace(targetPath, ''),
+            `${parsedPath.name}${parsedPath.ext}`,
+          ),
+        )
+        return {
+          ...v,
+          path,
+        }
+      }),
+    )
 
     await Promise.all(
       filesWithSavingPath.map((file) => saveFile(file.path, file.content)),
