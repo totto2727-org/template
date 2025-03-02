@@ -1,0 +1,8 @@
+[tools]
+"aqua:biome" = "latest"
+"aqua:dprint" = "latest"
+"aqua:go-task/task" = "latest"
+"aqua:nodejs/node" = "22"
+"aqua:pnpm" = "10"
+deno = "2.2.2"
+"npm:jsrepo" = "latest"

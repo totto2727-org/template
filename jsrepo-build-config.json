@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/jsrepo@1.41.2/schemas/registry-config.json",
+  "dirs": ["./blocks"],
+  "doNotListBlocks": [],
+  "doNotListCategories": [],
+  "listBlocks": [],
+  "listCategories": [],
+  "excludeDeps": [],
+  "includeBlocks": [],
+  "includeCategories": [],
+  "excludeBlocks": [],
+  "excludeCategories": [],
+  "preview": false
+}
