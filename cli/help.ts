@@ -1,4 +1,3 @@
-
 export function printUsage(): void {
   console.log(
     `
@@ -18,6 +17,6 @@ deno run -A @totto/template/cli.ts <target-path> <destination-path>
 deno run -A @totto/template/cli.ts frontend .
 // package.json, tsconfig.json, etc.
 \`\`\`
-`.trim()
-  );
+`.trim(),
+  )
 }

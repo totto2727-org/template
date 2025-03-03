@@ -2,6 +2,7 @@
   "exports": {
     "./cli": "./cli/cli.ts"
   },
+  "license": "MIT",
   "lock": false,
   "name": "@totto/template",
   "nodeModulesDir": "none",

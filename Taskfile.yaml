@@ -14,4 +14,4 @@ tasks:
 
   build:
     cmds:
-      - jsrepo build
+      - deno publish --dry-run --allow-dirty

@@ -1,6 +1,6 @@
 import { expect } from 'jsr:@totto/function@0.1.3/test'
-import { buildQuery } from "./download.ts";
-import { indentText } from "./helper/indentText.ts";
+import { buildQuery } from './download.ts'
+import { indentText } from './helper/indentText.ts'
 
 Deno.test('buildQuery', async (t) => {
   await t.step('depth = 0', () => {
