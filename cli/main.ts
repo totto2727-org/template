@@ -1,5 +1,6 @@
 import { Octokit } from 'npm:octokit@4.1.2'
 import { $ } from 'jsr:@david/dax@0.42.0'
+import { parseArgs } from 'jsr:@std/cli@1.0.13/parse-args'
 import { join, parse } from 'jsr:@std/path@1.0.8'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, pipe } from 'jsr:@totto/function@0.1.3/effect'
@@ -10,30 +11,33 @@ import type { GitHubRepository } from './type.ts'
 
 export async function main() {
   const tokenFromEnv = Deno.env.get('GITHUB_TOKEN')
-  // TODO: オプションで指定できるようにする
-  const limit = 10
-  // TODO: 引数で指定できるようにする
-  const repository = {
-    owner: 'totto2727-org',
-    repo: 'function',
-    branch: 'main',
-  } satisfies GitHubRepository
 
   // TODO: @effect/cliに置き換える
-  if (Deno.args.includes('--help')) {
+  const { depth = '10', branch, help, _ } = parseArgs(Deno.args)
+
+  if (help) {
     printUsage()
     Deno.exit(0)
   }
 
-  // TODO: @effect/cliに置き換える
-  if (Deno.args.length !== 2) {
-    console.error('Error: Exactly 2 arguments are required.')
+  if (_.length !== 4) {
+    console.error('Error: Exactly 4 arguments are required.')
     printUsage()
     Deno.exit(1)
   }
 
-  // TODO: @effect/cliに置き換える
-  const [targetPath, savingPath] = Deno.args
+  const [owner_, repo_, targetPath_, savingPath_] = _
+
+  const owner = owner_.toString()
+  const repo = repo_.toString()
+  const targetPath = targetPath_.toString()
+  const savingPath = savingPath_.toString()
+
+  const repository = {
+    owner,
+    repo,
+    branch,
+  } satisfies GitHubRepository
 
   console.log(`Downloading from: ${targetPath}`)
   console.log(`Saving to: ${savingPath}`)
@@ -50,7 +54,7 @@ export async function main() {
       octokit,
       repository,
       path: targetPath,
-      option: { limit },
+      option: { depth },
     })
 
     const filesWithSavingPath = pipe(

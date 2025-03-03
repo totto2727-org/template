@@ -6,7 +6,7 @@ export type DownloadedFile = {
 export type GitHubRepository = {
   owner: string
   repo: string
-  branch: string
+  branch?: string
 }
 
 type GitHubFile = {

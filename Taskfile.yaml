@@ -15,3 +15,7 @@ tasks:
   build:
     cmds:
       - deno publish --dry-run --allow-dirty
+
+  run:
+    cmds:
+      - deno run -A cli/cli.ts --branch=main --limit=10 totto2727-org function effect effect

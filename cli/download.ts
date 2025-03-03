@@ -10,7 +10,7 @@ type DownloadFromGitHubArgs = {
   repository: GitHubRepository
   path: string
   option: {
-    limit: number
+    depth: number
   }
 }
 
@@ -25,13 +25,17 @@ export async function downloadFromGitHub({
   octokit,
   repository,
   path,
-  option: { limit },
+  option: { depth },
 }: DownloadFromGitHubArgs): DownloadFromGitHubReturnType {
+  const branchAndPath = repository.branch
+    ? `${repository.branch}:${path}`
+    : path
+
   // TODO: バリデーション
-  const response = await octokit.graphql<GitHubResponse>(buildQuery(limit), {
+  const response = await octokit.graphql<GitHubResponse>(buildQuery(depth), {
     owner: repository.owner,
     repo: repository.repo,
-    branchAndPath: `${repository.branch}:${path}`,
+    branchAndPath,
   })
 
   // TODO: バリデーション
