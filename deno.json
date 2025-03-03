@@ -1,4 +1,9 @@
 {
+  "exports": {
+    "./cli": "./cli/cli.ts"
+  },
   "lock": false,
-  "nodeModulesDir": "none"
+  "name": "@totto/template",
+  "nodeModulesDir": "none",
+  "version": "0.0.1"
 }
