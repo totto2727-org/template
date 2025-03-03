@@ -5,4 +5,3 @@
 "aqua:nodejs/node" = "22"
 "aqua:pnpm" = "10"
 deno = "2.2.2"
-"npm:jsrepo" = "latest"

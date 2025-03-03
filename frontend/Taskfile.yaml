@@ -11,7 +11,3 @@ tasks:
     cmds:
       - biome check --write
       - dprint fmt --allow-no-files
-
-  build:
-    cmds:
-      - jsrepo build
