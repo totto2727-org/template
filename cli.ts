@@ -7,13 +7,15 @@
  *
  * @example
  * ```bash
- * deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts <target-path> <destination-path>
- * deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts frontend .
+ * # use `gh auth token` to get GitHub's token
+ * deno run --allow-net --allow-write --allow-read --allow-env --allow-sys --allow-run https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts <target-path> <destination-path>
+ * deno run --allow-net --allow-write --allow-read --allow-env --allow-sys --allow-run https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts frontend .
  * // package.json, tsconfig.json, etc.
  * ```
  */
 
 import { Octokit } from 'npm:octokit@4.1.2'
+import $ from 'jsr:@david/dax@0.42.0'
 import { dirname, join, parse } from 'jsr:@std/path@1.0.8'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, Match, Predicate, pipe } from 'jsr:@totto/function@0.1.3/effect'
@@ -23,6 +25,8 @@ type Repository = {
   repo: string
   branch: string
 }
+
+const tokenFromEnv = Deno.env.get('GITHUB_TOKEN')
 
 if (import.meta.main) {
   const repository = {
@@ -47,7 +51,11 @@ if (import.meta.main) {
   console.log(`Saving to: ${savingPath}`)
 
   try {
-    const octokit = new Octokit()
+    const token = tokenFromEnv ?? await $`gh auth token`.printCommand(false).quiet().text()
+
+    const octokit = new Octokit({
+      auth: token,
+    })
     const files = await recursiveDownloadFromGitHub({
       octokit,
       repository,
@@ -175,8 +183,8 @@ A simple Deno script to download files from GitHub raw URLs to a specified path.
 @example
 
 \`\`\`bash
-deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts <target-path> <destination-path>
-deno run --allow-net --allow-write --allow-read https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts frontend .
+deno run --allow-net --allow-write --allow-read --allow-env --allow-sys --allow-run https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts <target-path> <destination-path>
+deno run --allow-net --allow-write --allow-read --allow-env --allow-sys --allow-run https://raw.githubusercontent.com/totto2727-org/template/refs/heads/main/cli.ts frontend .
 // package.json, tsconfig.json, etc.
 \`\`\`
 `.trim(),
