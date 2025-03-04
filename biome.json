@@ -1,22 +1,21 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "root": ".",
-    "defaultBranch": "main",
-    "useIgnoreFile": true
-  },
   "files": {
-    "ignoreUnknown": true,
-    "ignore": ["**/*-lock.json"]
+    "ignore": [
+      "**/*-lock.json"
+    ],
+    "ignoreUnknown": true
   },
   "formatter": {
     "enabled": true,
+    "lineWidth": 120,
     "useEditorconfig": true
   },
-  "organizeImports": {
-    "enabled": true
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    }
   },
   "linter": {
     "enabled": true,
@@ -24,10 +23,14 @@
       "recommended": true
     }
   },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "semicolons": "asNeeded"
-    }
+  "organizeImports": {
+    "enabled": true
+  },
+  "vcs": {
+    "clientKind": "git",
+    "defaultBranch": "main",
+    "enabled": true,
+    "root": ".",
+    "useIgnoreFile": true
   }
 }

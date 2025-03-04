@@ -1,10 +1,15 @@
 {
   "exports": {
-    "./cli": "./cli/cli.ts"
+    "./cli": "./cli/cli.ts",
+    "./tsconfig/deno": "./tsconfig/tsconfig.deno.json",
+    "./tsconfig/next": "./tsconfig/tsconfig.next.json",
+    "./tsconfig/node22": "./tsconfig/tsconfig.node22.json",
+    "./tsconfig/react": "./tsconfig/tsconfig.react.json",
+    "./tsconfig/react-native": "./tsconfig/tsconfig.react-native.json"
   },
   "license": "MIT",
   "lock": false,
   "name": "@totto/template",
   "nodeModulesDir": "none",
-  "version": "1.0.1"
+  "version": "1.1.0"
 }

@@ -1,12 +1,20 @@
 {
-  "name": "template",
-  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "latest"
+  },
   "engines": {
     "node": ">=22.0.0",
     "pnpm": ">=10.0.0"
   },
-  "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "latest"
-  }
+  "name": "template",
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@biomejs/biome"
+    ],
+    "onlyBuiltDependencies": [
+      "@biomejs/biome"
+    ]
+  },
+  "private": true,
+  "type": "module"
 }

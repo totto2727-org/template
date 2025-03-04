@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "exactOptionalPropertyTypes": false,
+        "noUncheckedIndexedAccess": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "verbatimModuleSyntax": true
+    },
+    "extends": [
+        "@tsconfig/strictest/tsconfig.json",
+        "@tsconfig/react-native/tsconfig.json"
+    ]
+}

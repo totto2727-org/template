@@ -10,4 +10,23 @@ tasks:
   fix:
     cmds:
       - biome check --write
-      - dprint fmt --allow-no-files
+      - dprint fmt
+
+  check:
+    deps:
+      - check:biome
+      - check:dprint
+      - check:tsc
+
+  check:biome:
+    cmds:
+      - biome check
+
+  check:dprint:
+    cmds:
+      - dprint check
+
+  check:tsc:
+    cmds:
+      - pnpm tsc --noEmit
+      - deno check .
