@@ -27,7 +27,7 @@ export async function downloadFromGitHub({
   path,
   option: { depth },
 }: DownloadFromGitHubArgs): DownloadFromGitHubReturnType {
-  const branchAndPath = repository.branch ? `${repository.branch}:${path}` : path
+  const branchAndPath = `${repository.branch ?? 'main'}:${path}`
 
   // TODO: バリデーション
   const response = await octokit.graphql<GitHubResponse>(buildQuery(depth), {

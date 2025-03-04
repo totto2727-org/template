@@ -1,6 +1,7 @@
 import { Octokit } from 'npm:octokit@4.1.2'
 import { $ } from 'jsr:@david/dax@0.42.0'
 import { parseArgs } from 'jsr:@std/cli@1.0.13/parse-args'
+import { resolve } from 'jsr:@std/path@1'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, pipe } from 'jsr:@totto/function@0.1.3/effect'
 import { downloadFromGitHub } from './download.ts'
@@ -30,7 +31,7 @@ export async function main() {
   const owner = owner_.toString()
   const repo = repo_.toString()
   const targetPath = targetPath_.toString()
-  const savingPath = savingPath_.toString()
+  const savingPath = resolve(savingPath_.toString())
 
   const repository = {
     owner,
