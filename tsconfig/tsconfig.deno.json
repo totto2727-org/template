@@ -7,8 +7,5 @@
     "noUnusedParameters": false,
     "verbatimModuleSyntax": true
   },
-  "extends": [
-    "@tsconfig/strictest/tsconfig.json",
-    "@tsconfig/deno/tsconfig.json"
-  ]
+  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/deno/tsconfig.json"]
 }

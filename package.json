@@ -8,12 +8,8 @@
   },
   "name": "template",
   "pnpm": {
-    "ignoredBuiltDependencies": [
-      "@biomejs/biome"
-    ],
-    "onlyBuiltDependencies": [
-      "@biomejs/biome"
-    ]
+    "ignoredBuiltDependencies": ["@biomejs/biome"],
+    "onlyBuiltDependencies": ["@biomejs/biome"]
   },
   "private": true,
   "type": "module"

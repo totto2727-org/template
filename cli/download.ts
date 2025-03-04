@@ -27,9 +27,7 @@ export async function downloadFromGitHub({
   path,
   option: { depth },
 }: DownloadFromGitHubArgs): DownloadFromGitHubReturnType {
-  const branchAndPath = repository.branch
-    ? `${repository.branch}:${path}`
-    : path
+  const branchAndPath = repository.branch ? `${repository.branch}:${path}` : path
 
   // TODO: バリデーション
   const response = await octokit.graphql<GitHubResponse>(buildQuery(depth), {
@@ -39,17 +37,12 @@ export async function downloadFromGitHub({
   })
 
   // TODO: バリデーション
-  if (
-    Record.isEmptyRecord(response.repository.object as Record<string, unknown>)
-  ) {
+  if (Record.isEmptyRecord(response.repository.object as Record<string, unknown>)) {
     return []
   }
 
   // TODO: バリデーション
-  if (
-    'text' in response.repository.object &&
-    typeof response.repository.object.text === 'string'
-  ) {
+  if ('text' in response.repository.object && typeof response.repository.object.text === 'string') {
     const object = response.repository.object
 
     return [
@@ -61,10 +54,7 @@ export async function downloadFromGitHub({
   }
 
   // TODO: バリデーション
-  if (
-    'entries' in response.repository.object &&
-    Array.isArray(response.repository.object.entries)
-  ) {
+  if ('entries' in response.repository.object && Array.isArray(response.repository.object.entries)) {
     const entries = response.repository.object as {
       entries: GitHubEntry[]
     }
@@ -77,12 +67,8 @@ export async function downloadFromGitHub({
 
 export function flattenGitHubEntry(entries: GitHubEntry[]): DownloadedFile[] {
   const entryMatcher = Match.type<GitHubEntry>().pipe(
-    Match.discriminator('type')('blob', (v) => [
-      { path: v.path, content: v.object.text },
-    ]),
-    Match.discriminator('type')('tree', (v) =>
-      flattenGitHubEntry(v.object.entries),
-    ),
+    Match.discriminator('type')('blob', (v) => [{ path: v.path, content: v.object.text }]),
+    Match.discriminator('type')('tree', (v) => flattenGitHubEntry(v.object.entries)),
     Match.orElseAbsurd,
   )
 

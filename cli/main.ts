@@ -1,7 +1,6 @@
 import { Octokit } from 'npm:octokit@4.1.2'
 import { $ } from 'jsr:@david/dax@0.42.0'
 import { parseArgs } from 'jsr:@std/cli@1.0.13/parse-args'
-import { join, parse } from 'jsr:@std/path@1.0.8'
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, pipe } from 'jsr:@totto/function@0.1.3/effect'
 import { downloadFromGitHub } from './download.ts'
@@ -44,9 +43,7 @@ export async function main() {
 
   // TODO: Effectに置き換える
   try {
-    const token =
-      tokenFromEnv ??
-      (await $`gh auth token`.printCommand(false).quiet().text())
+    const token = tokenFromEnv ?? (await $`gh auth token`.printCommand(false).quiet().text())
     const octokit = new Octokit({
       auth: token,
     })
@@ -60,30 +57,17 @@ export async function main() {
     const filesWithSavingPath = pipe(
       files,
       Array.map((v) => {
-        const parsedPath = parse(v.path)
-        const path = join(
-          savingPath,
-          join(
-            v.path.replace(targetPath, ''),
-            `${parsedPath.name}${parsedPath.ext}`,
-          ),
-        )
         return {
           ...v,
-          path,
+          path: v.path.replace(targetPath, savingPath),
         }
       }),
     )
 
-    await Promise.all(
-      filesWithSavingPath.map((file) => saveFile(file.path, file.content)),
-    )
+    await Promise.all(filesWithSavingPath.map((file) => saveFile(file.path, file.content)))
     Deno.exit(0)
   } catch (error: unknown) {
-    console.error(
-      'Error:',
-      error instanceof Error ? error.message : JSON.stringify(error),
-    )
+    console.error('Error:', error instanceof Error ? error.message : JSON.stringify(error))
     Deno.exit(1)
   }
 }
