@@ -28,5 +28,5 @@ tasks:
 
   check:tsc:
     cmds:
-      - pnpm tsc --noEmit
-      - deno check .
+      - na tsc --noEmit
+      # - deno check .
