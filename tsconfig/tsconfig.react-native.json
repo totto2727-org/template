@@ -7,5 +7,6 @@
     "noUnusedParameters": false,
     "verbatimModuleSyntax": true
   },
-  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/react-native/tsconfig.json"]
+  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/react-native/tsconfig.json"],
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }
