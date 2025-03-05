@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "exactOptionalPropertyTypes": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "rootDirs": [".", "./.react-router/types"],
+    "verbatimModuleSyntax": true
+  },
+  "exclude": ["build"],
+  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/remix/tsconfig.json"],
+  "include": ["**/*.ts", "**/*.tsx", "**/.react-router/**/*.ts", "**/.react-router/**/*.tsx"]
+}
