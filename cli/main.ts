@@ -2,7 +2,6 @@ import { Octokit } from 'npm:octokit@4.1.2'
 import { $ } from 'jsr:@david/dax@0.42.0'
 import { parseArgs } from 'jsr:@std/cli@1.0.13/parse-args'
 import { resolve } from 'jsr:@std/path@1'
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, pipe } from 'jsr:@totto/function@0.1.3/effect'
 import { downloadFromGitHub } from './download.ts'
 import { printUsage } from './help.ts'

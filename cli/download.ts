@@ -1,5 +1,4 @@
 import type { Octokit } from 'npm:octokit@4.1.2'
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 import { Array, Match, Record, pipe } from 'jsr:@totto/function@0.1.3/effect'
 import { indentText } from './helper/indentText.ts'
 import type { GitHubEntry, GitHubRepository, GitHubResponse } from './type.ts'

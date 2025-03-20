@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "exactOptionalPropertyTypes": false,
-    "noUncheckedIndexedAccess": false,
+    "noPropertyAccessFromIndexSignature": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "rootDirs": [".", "./.react-router/types"],

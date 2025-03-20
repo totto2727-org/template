@@ -4,7 +4,7 @@
     "exactOptionalPropertyTypes": false,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "noUncheckedIndexedAccess": false,
+    "noPropertyAccessFromIndexSignature": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "verbatimModuleSyntax": true
