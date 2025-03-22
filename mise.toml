@@ -4,5 +4,5 @@
 "aqua:go-task/task" = "latest"
 "aqua:nodejs/node" = "22"
 "aqua:pnpm" = "10"
-deno = "2.2.3"
+deno = "2.2.5"
 "npm:@antfu/ni" = "latest"
