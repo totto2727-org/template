@@ -1,8 +1,6 @@
 {
-  "exclude": ["eslint"],
   "exports": {
     "./cli": "./cli/cli.ts",
-    "./eslint": "./eslint/eslint.expo.config.js",
     "./tsconfig/deno": "./tsconfig/tsconfig.deno.json",
     "./tsconfig/next": "./tsconfig/tsconfig.next.json",
     "./tsconfig/node22": "./tsconfig/tsconfig.node22.json",
@@ -13,5 +11,5 @@
   "lock": false,
   "name": "@totto/template",
   "nodeModulesDir": "none",
-  "version": "1.2.0"
+  "version": "1.2.1"
 }

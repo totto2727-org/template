@@ -1,4 +1,4 @@
-import expoConfig from 'eslint-config-expo/flat.js'
+import expoConfig from 'npm:eslint-config-expo/flat.js'
 
 export default [
   ...expoConfig,
