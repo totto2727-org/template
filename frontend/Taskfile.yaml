@@ -7,6 +7,13 @@ tasks:
       - list
     cmd: task --list-all
 
+  setup:
+    cmds:
+      - cmd: lefthook uninstall
+        silent: true
+        ignore_error: true
+      - cmd: lefthook install
+
   fix:
     cmds:
       - biome check --write
