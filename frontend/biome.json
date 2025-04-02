@@ -21,6 +21,10 @@
       "recommended": true,
       "suspicious": {
         "noShadowRestrictedNames": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "noUnusedImports": "warn"
       }
     }
   },
