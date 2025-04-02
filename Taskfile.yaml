@@ -16,8 +16,8 @@ tasks:
 
   fix:
     cmds:
-      - biome check --write
-      - dprint fmt
+      - na biome check --write
+      - na dprint fmt
 
   check:
     deps:
@@ -27,11 +27,11 @@ tasks:
 
   check:biome:
     cmds:
-      - biome check
+      - na biome check
 
   check:dprint:
     cmds:
-      - dprint check
+      - na dprint check
 
   check:tsc:
     cmds:
