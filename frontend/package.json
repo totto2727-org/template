@@ -7,6 +7,10 @@
   },
   "type": "module",
   "devDependencies": {
-    "@biomejs/biome": "latest"
+    "@biomejs/biome": "latest",
+    "dprint": "latest"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@biomejs/biome", "dprint"]
   }
 }
