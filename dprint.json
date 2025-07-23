@@ -1,7 +1,6 @@
 {
   "dockerfile": {},
   "excludes": ["**/*-lock.json", "**/pnpm-lock.yaml"],
-  "lineWidth": 120,
   "markdown": {},
   "markup": {},
   "plugins": [

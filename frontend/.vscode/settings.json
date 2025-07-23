@@ -1,31 +1,20 @@
 {
-  "dprint.experimentalLsp": true,
-  "biome.enabled": true,
-  "eslint.enable": false,
-  "prettier.enable": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "explorer.fileNesting.patterns": {
-    "tsconfig.json": "tsconfig.*.json",
-    "vite.config.ts": "vite.config.*.ts",
-    ".env": ".env*",
-    ".env.local": ".env*",
-    "package.json": ".node-version, .npmrc, package-lock.json, yarn-lock.yaml, pnpm-lock.yaml, bun.lockb, pnpm-workspace.yaml, bunfig.toml, *.config.js, *.config.ts, *.config.mjs, *.config.cjs, *.config.d.ts, *.config.d.cts, *.config.d.mts, *.config.d.cts, *.config.ts, *.json, *.yaml",
-    "README.md": "*.code-workspace, .gitignore, .editorconfig, mise.toml, renovate.json, LICENSE, Taskfile.yaml"
+  "[dockerfile]": {
+    "editor.defaultFormatter": "dprint.dprint"
   },
-  "editor.defaultFormatter": "dprint.dprint",
+  "[graphql]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "dprint.dprint"
+  },
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[json]": {
@@ -34,28 +23,39 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[graphql]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "biomejs.biome"
+  "[markdown]": {
+    "editor.defaultFormatter": "dprint.dprint"
   },
   "[scss]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[markdown]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
   "[toml]": {
     "editor.defaultFormatter": "dprint.dprint"
   },
-  "[dockerfile]": {
-    "editor.defaultFormatter": "dprint.dprint"
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "[html]": {
-    "editor.defaultFormatter": "dprint.dprint"
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[yaml]": {
     "editor.defaultFormatter": "dprint.dprint"
-  }
+  },
+  "biome.enabled": true,
+  "dprint.experimentalLsp": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "dprint.dprint",
+  "eslint.enable": false,
+  "explorer.fileNesting.patterns": {
+    ".env": ".env*",
+    ".env.local": ".env*",
+    "package.json": ".node-version, .npmrc, package-lock.json, yarn-lock.yaml, pnpm-lock.yaml, bun.lockb, pnpm-workspace.yaml, bunfig.toml, *.config.js, *.config.ts, *.config.mjs, *.config.cjs, *.config.d.ts, *.config.d.cts, *.config.d.mts, *.config.d.cts, *.config.ts, *.json, *.yaml",
+    "README.md": "*.code-workspace, .gitignore, .editorconfig, mise.toml, renovate.json, LICENSE, Taskfile.yaml",
+    "tsconfig.json": "tsconfig.*.json",
+    "vite.config.ts": "vite.config.*.ts"
+  },
+  "prettier.enable": false
 }

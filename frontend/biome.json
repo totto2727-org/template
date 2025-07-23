@@ -1,12 +1,22 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "recommended": true,
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on",
+        "useSortedProperties": "on"
+      }
+    },
+    "enabled": true
+  },
   "files": {
-    "ignore": ["**/*-lock.json"],
     "ignoreUnknown": true
   },
   "formatter": {
     "enabled": true,
-    "lineWidth": 120,
+    "indentStyle": "space",
     "useEditorconfig": true
   },
   "javascript": {
@@ -16,21 +26,25 @@
     }
   },
   "linter": {
+    "domains": {
+      "project": "recommended"
+    },
     "enabled": true,
     "rules": {
+      "correctness": {
+        "noUnusedImports": "warn",
+        "noUnusedVariables": "warn",
+        "useImportExtensions": {
+          "level": "warn"
+        }
+      },
       "recommended": true,
       "suspicious": {
         "noShadowRestrictedNames": "off"
-      },
-      "correctness": {
-        "noUnusedVariables": "warn",
-        "noUnusedImports": "warn"
       }
     }
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "root": false,
   "vcs": {
     "clientKind": "git",
     "defaultBranch": "main",

@@ -1,16 +1,23 @@
 {
-  "name": "frontend",
-  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "2.0.6",
+    "dprint": "^0.50.0",
+    "typescript": "^5.8.3"
+  },
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=24.0.0",
     "pnpm": ">=10.0.0"
   },
-  "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "latest",
-    "dprint": "latest"
+  "imports": {
+    "#@*": "./src"
   },
+  "name": "frontend",
   "pnpm": {
-    "onlyBuiltDependencies": ["@biomejs/biome", "dprint"]
-  }
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "dprint"
+    ]
+  },
+  "private": true,
+  "type": "module"
 }

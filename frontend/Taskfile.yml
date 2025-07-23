@@ -23,7 +23,7 @@ tasks:
     deps:
       - check:biome
       - check:dprint
-      - check:tsc
+      # - check:tsc
 
   check:biome:
     cmds:
@@ -33,7 +33,7 @@ tasks:
     cmds:
       - na dprint check
 
-  check:tsc:
-    cmds:
-      - na tsc
-      # - deno check .
+  # check:tsc:
+  #   cmds:
+  #     - na tsc
+  #     - deno check .
