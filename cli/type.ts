@@ -29,7 +29,7 @@ export type GitHubEntry = GitHubFile | GitHubDirectory
 
 export type GitHubResponse = {
   repository: {
-    object: // biome-ignore lint/complexity/noBannedTypes: <explanation>
+    object: // biome-ignore lint/complexity/noBannedTypes: Required
       | {}
       | {
           text: string

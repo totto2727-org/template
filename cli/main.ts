@@ -1,8 +1,8 @@
-import { Octokit } from 'npm:octokit@4.1.2'
 import { $ } from 'jsr:@david/dax@0.42.0'
 import { parseArgs } from 'jsr:@std/cli@1.0.13/parse-args'
 import { resolve } from 'jsr:@std/path@1'
 import { Array, pipe } from 'jsr:@totto/function@0.1.3/effect'
+import { Octokit } from 'npm:octokit@4.1.2'
 import { downloadFromGitHub } from './download.ts'
 import { printUsage } from './help.ts'
 import { saveFile } from './save.ts'
@@ -33,9 +33,9 @@ export async function main() {
   const savingPath = resolve(savingPath_.toString())
 
   const repository = {
+    branch,
     owner,
     repo,
-    branch,
   } satisfies GitHubRepository
 
   console.log(`Downloading from: ${targetPath}`)
@@ -43,15 +43,17 @@ export async function main() {
 
   // TODO: Effectに置き換える
   try {
-    const token = tokenFromEnv ?? (await $`gh auth token`.printCommand(false).quiet().text())
+    const token =
+      tokenFromEnv ??
+      (await $`gh auth token`.printCommand(false).quiet().text())
     const octokit = new Octokit({
       auth: token,
     })
     const files = await downloadFromGitHub({
       octokit,
-      repository,
-      path: targetPath,
       option: { depth },
+      path: targetPath,
+      repository,
     })
 
     const filesWithSavingPath = pipe(
@@ -64,10 +66,15 @@ export async function main() {
       }),
     )
 
-    await Promise.all(filesWithSavingPath.map((file) => saveFile(file.path, file.content)))
+    await Promise.all(
+      filesWithSavingPath.map((file) => saveFile(file.path, file.content)),
+    )
     Deno.exit(0)
   } catch (error: unknown) {
-    console.error('Error:', error instanceof Error ? error.message : JSON.stringify(error))
+    console.error(
+      'Error:',
+      error instanceof Error ? error.message : JSON.stringify(error),
+    )
     Deno.exit(1)
   }
 }

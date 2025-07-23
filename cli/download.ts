@@ -1,8 +1,12 @@
+import { Array, Match, pipe, Record } from 'jsr:@totto/function@0.1.3/effect'
 import type { Octokit } from 'npm:octokit@4.1.2'
-import { Array, Match, Record, pipe } from 'jsr:@totto/function@0.1.3/effect'
 import { indentText } from './helper/indentText.ts'
-import type { GitHubEntry, GitHubRepository, GitHubResponse } from './type.ts'
-import type { DownloadedFile } from './type.ts'
+import type {
+  DownloadedFile,
+  GitHubEntry,
+  GitHubRepository,
+  GitHubResponse,
+} from './type.ts'
 
 type DownloadFromGitHubArgs = {
   octokit: Octokit
@@ -30,30 +34,38 @@ export async function downloadFromGitHub({
 
   // TODO: バリデーション
   const response = await octokit.graphql<GitHubResponse>(buildQuery(depth), {
+    branchAndPath,
     owner: repository.owner,
     repo: repository.repo,
-    branchAndPath,
   })
 
   // TODO: バリデーション
-  if (Record.isEmptyRecord(response.repository.object as Record<string, unknown>)) {
+  if (
+    Record.isEmptyRecord(response.repository.object as Record<string, unknown>)
+  ) {
     return []
   }
 
   // TODO: バリデーション
-  if ('text' in response.repository.object && typeof response.repository.object.text === 'string') {
+  if (
+    'text' in response.repository.object &&
+    typeof response.repository.object.text === 'string'
+  ) {
     const object = response.repository.object
 
     return [
       {
-        path: path,
         content: object.text,
+        path: path,
       },
     ]
   }
 
   // TODO: バリデーション
-  if ('entries' in response.repository.object && Array.isArray(response.repository.object.entries)) {
+  if (
+    'entries' in response.repository.object &&
+    Array.isArray(response.repository.object.entries)
+  ) {
     const entries = response.repository.object as {
       entries: GitHubEntry[]
     }
@@ -66,8 +78,12 @@ export async function downloadFromGitHub({
 
 export function flattenGitHubEntry(entries: GitHubEntry[]): DownloadedFile[] {
   const entryMatcher = Match.type<GitHubEntry>().pipe(
-    Match.discriminator('type')('blob', (v) => [{ path: v.path, content: v.object.text }]),
-    Match.discriminator('type')('tree', (v) => flattenGitHubEntry(v.object.entries)),
+    Match.discriminator('type')('blob', (v) => [
+      { content: v.object.text, path: v.path },
+    ]),
+    Match.discriminator('type')('tree', (v) =>
+      flattenGitHubEntry(v.object.entries),
+    ),
     Match.orElseAbsurd,
   )
 

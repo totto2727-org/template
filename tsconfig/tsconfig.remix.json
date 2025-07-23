@@ -9,6 +9,14 @@
     "verbatimModuleSyntax": true
   },
   "exclude": ["build"],
-  "extends": ["@tsconfig/strictest/tsconfig.json", "@tsconfig/remix/tsconfig.json"],
-  "include": ["**/*.ts", "**/*.tsx", "**/.react-router/**/*.ts", "**/.react-router/**/*.tsx"]
+  "extends": [
+    "@tsconfig/strictest/tsconfig.json",
+    "@tsconfig/remix/tsconfig.json"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/.react-router/**/*.ts",
+    "**/.react-router/**/*.tsx"
+  ]
 }

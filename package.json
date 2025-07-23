@@ -1,18 +1,19 @@
 {
   "devDependencies": {
-    "@biomejs/biome": "latest"
+    "@biomejs/biome": "2.0.6",
+    "dprint": "^0.50.0"
   },
   "engines": {
-    "node": ">=22.0.0",
+    "node": ">=24.0.0",
     "pnpm": ">=10.0.0"
   },
   "name": "template",
   "pnpm": {
-    "onlyBuiltDependencies": ["@biomejs/biome", "dprint"]
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "dprint"
+    ]
   },
   "private": true,
-  "type": "module",
-  "dependencies": {
-    "dprint": "^0.50.0"
-  }
+  "type": "module"
 }
