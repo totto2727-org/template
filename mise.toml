@@ -1,7 +1,7 @@
 [tools]
-"aqua:evilmartians/lefthook" = "1.12.2"
+"aqua:evilmartians/lefthook" = "2.1.10"
 "aqua:go-task/task" = "3.6.0"
-"aqua:nodejs/node" = "24.4.1"
-"aqua:pnpm" = "10"
+"aqua:nodejs/node" = "26.7.0"
+"aqua:pnpm" = "11"
 deno = "2.4.2"
 "npm:@antfu/ni" = "latest"
