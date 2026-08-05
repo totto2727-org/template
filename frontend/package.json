@@ -2,7 +2,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.0.6",
     "dprint": "^0.50.0",
-    "typescript": "^5.8.3"
+    "typescript": "^7.0.0"
   },
   "engines": {
     "node": ">=24.0.0",
